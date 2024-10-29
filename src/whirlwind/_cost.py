@@ -77,7 +77,7 @@ def compute_carballo_costs(igram, corr, nlooks, mask, batch_size: int = 1000):
     cost_rt = compute_cost(-phase_dy_smooth, corr_dy)
 
     if mask is not None:
-        mask = np.asanyarray(mask)
+        mask = (1 - np.asanyarray(mask)).astype(bool)
         mask_dy = np.logical_and(mask[1:, :], mask[:-1, :])
         mask_dx = np.logical_and(mask[:, 1:], mask[:, :-1])
 
